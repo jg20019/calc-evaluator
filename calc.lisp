@@ -19,5 +19,7 @@
         ((eq fn '-) (reduce #'- args :initial-value 0))
         ((eq fn '/) (cond ((null args) (error "/ needs at least one argument.")) 
                           ((= (length args) 1) (/ (car args)))
-                          (t (/ (car args) (reduce #'* (cdr args) :initial-value 1)))))))
-
+                          (t (/ (car args) (reduce #'* (cdr args) :initial-value 1)))))
+        ((eq fn 'square) (if (not (= 1 (length args)))
+                             (error "square needs exactly  one argument.")
+                             (* (car args) (car args))))))
